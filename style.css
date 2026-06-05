@@ -1,0 +1,130 @@
+/* ==========================================================================
+   1. UI KIT & VARIABLES
+   ========================================================================== */
+   :root {
+    --primary: #4CAF50;          
+    --primary-hover: #388E3C;    
+    --primary-light: #E8F5E9;
+    --secondary: #1A2327;        
+    --neutral-d-grey: #333333;   
+    --neutral-grey: #666666;     
+    --neutral-light: #F8F9FA;    
+    --white: #FFFFFF;
+    --danger: #E53935;
+    --danger-hover: #C62828;
+    
+    --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 50px rgba(76, 175, 80, 0.08);
+    --shadow-glow: 0 10px 30px rgba(76, 175, 80, 0.2);
+    
+    --container-width: 1200px;
+    --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ==========================================================================
+   2. GLOBAL STYLES & RESET
+   ========================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+html { scroll-behavior: smooth; }
+body { color: var(--neutral-d-grey); background-color: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.625; overflow-x: hidden; }
+.container { max-width: var(--container-width); margin: 0 auto; padding: 0 24px; }
+
+/* Scroll Reveal კლასები */
+.reveal { opacity: 0; transform: translateY(40px) scale(0.98); transition: var(--transition-smooth); }
+.reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+
+/* ==========================================================================
+   3. HEADER & NAVIGATION
+   ========================================================================== */
+header {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    padding: 24px 0; box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 1000; transition: var(--transition-smooth);
+}
+.nav-box { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 24px; font-weight: 700; color: var(--secondary); display: flex; align-items: center; gap: 10px; text-decoration: none; letter-spacing: -0.5px; }
+.logo span { color: var(--primary); }
+.nav-links { display: flex; list-style: none; gap: 36px; align-items: center; }
+.nav-links a:not(.btn-primary):not(.btn-logout) { text-decoration: none; color: var(--neutral-grey); font-size: 15px; font-weight: 500; position: relative; transition: var(--transition-smooth); }
+.nav-links a:not(.btn-primary):not(.btn-logout)::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 50%; transform: translateX(-50%); background-color: var(--primary); transition: var(--transition-smooth); border-radius: 2px; }
+.nav-links a:not(.btn-primary):not(.btn-logout):hover::after { width: 100%; }
+.nav-links a:hover { color: var(--secondary); }
+
+/* მომხმარებლის ბლოკის პრემიუმ სტილი */
+.user-welcome { font-weight: 600; color: var(--primary); font-size: 15px; background: var(--primary-light); padding: 8px 14px; border-radius: 6px; }
+
+.menu-toggle { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; }
+.menu-toggle span { display: block; width: 26px; height: 3px; background-color: var(--secondary); border-radius: 4px; transition: var(--transition-smooth); }
+
+/* ==========================================================================
+   4. BUTTONS
+   ========================================================================== */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, #43A047 100%); color: var(--white); padding: 12px 28px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition-smooth); border: none; cursor: pointer; box-shadow: var(--shadow-glow);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(76, 175, 80, 0.35); }
+
+.btn-logout {
+    background: linear-gradient(135deg, var(--danger) 0%, #D32F2F 100%); color: var(--white); padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; transition: var(--transition-smooth); border: none; cursor: pointer; box-shadow: 0 8px 20px rgba(229, 57, 53, 0.15);
+}
+.btn-logout:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(229, 57, 53, 0.3); }
+
+/* ==========================================================================
+   5. HERO SECTION
+   ========================================================================== */
+.hero { background: radial-gradient(circle at 80% 20%, #E8F5E9 0%, var(--white) 50%); padding: 140px 0; overflow: hidden; }
+.hero-flex { display: flex; justify-content: space-between; align-items: center; gap: 60px; }
+.hero-text { flex: 1; max-width: 600px; animation: premiumFadeInLeft 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+.hero-text h1 { font-size: 56px; font-weight: 800; line-height: 68px; color: var(--secondary); margin-bottom: 24px; letter-spacing: -1px; }
+.hero-text h1 span { color: var(--primary); background: linear-gradient(135deg, var(--primary) 0%, #2E7D32 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.hero-text p { font-size: 16px; line-height: 28px; color: var(--neutral-grey); margin-bottom: 40px; }
+.hero-img { flex: 1; display: flex; justify-content: flex-end; animation: premiumFadeInRight 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+.hero-img img { max-width: 480px; width: 100%; height: auto; transition: var(--transition-smooth); }
+.hero-img img:hover { transform: translateY(-8px); }
+
+/* ==========================================================================
+   6. SERVICES GRID
+   ========================================================================== */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding: 32px 0; }
+.service-card { background: var(--white); padding: 40px 32px; border-radius: 16px; text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); border: 1px solid #F0F2F5; position: relative; }
+.service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 16px; border: 2px solid var(--primary); opacity: 0; transition: var(--transition-smooth); pointer-events: none; }
+.service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-10px); }
+.service-card:hover::before { opacity: 0.15; }
+.service-icon { font-size: 56px; margin-bottom: 24px; display: inline-block; transition: var(--transition-smooth); }
+.service-card:hover .service-icon { transform: scale(1.12) translateY(-4px); }
+.service-card h3 { font-size: 24px; font-weight: 700; color: var(--secondary); margin-bottom: 12px; }
+
+/* ==========================================================================
+   7. BLOG & PRICING
+   ========================================================================== */
+.blog-grid, .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+.blog-card { position: relative; margin-bottom: 40px; border-radius: 16px; background: transparent; }
+.blog-img { width: 100%; height: 290px; object-fit: cover; border-radius: 16px; transition: var(--transition-smooth); box-shadow: var(--shadow-sm); }
+.blog-card:hover .blog-img { transform: scale(1.04); box-shadow: var(--shadow-md); }
+.blog-content { background: var(--white); width: 88%; margin: -70px auto 0; position: relative; padding: 28px 24px; border-radius: 14px; text-align: center; box-shadow: var(--shadow-md); border: 1px solid #EAECEF; transition: var(--transition-smooth); z-index: 2; }
+.blog-card:hover .blog-content { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: rgba(76, 175, 80, 0.4); }
+
+.pricing-card { background: var(--white); border: 1px solid #EAECEF; border-radius: 16px; padding: 56px 32px; text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition-smooth); }
+.pricing-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-8px); border-color: var(--primary); }
+.price { font-size: 52px; font-weight: 800; color: var(--secondary); margin: 24px 0; letter-spacing: -1px; }
+
+/* ==========================================================================
+   8. KEYFRAMES & MEDIA QUERIES
+   ========================================================================== */
+@keyframes premiumFadeInLeft { from { opacity: 0; transform: translateX(-50px) scale(0.98); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes premiumFadeInRight { from { opacity: 0; transform: translateX(50px) scale(0.98); } to { opacity: 1; transform: translateX(0) scale(1); } }
+
+@media (max-width: 1024px) {
+    .hero-text h1 { font-size: 42px; line-height: 54px; }
+    .services-grid, .blog-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+@media (max-width: 768px) {
+    header { padding: 18px 0; }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: -24px; right: -24px; background: var(--white); padding: 40px; box-shadow: var(--shadow-md); gap: 28px; border-top: 1px solid #F0F0F0; }
+    .nav-links.active { display: flex; }
+    .menu-toggle { display: flex; }
+    .hero-flex { flex-direction: column-reverse; text-align: center; gap: 40px; }
+    .hero-img { justify-content: center; }
+    .services-grid, .blog-grid, .pricing-grid { grid-template-columns: 1fr; }
+}
